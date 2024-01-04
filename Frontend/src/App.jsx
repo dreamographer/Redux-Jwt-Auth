@@ -1,9 +1,13 @@
-import React from 'react'
-
+import { Outlet } from "react-router-dom";
+import React from "react";
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <>
+      <Toaster />
+      <Outlet />
+    </>
+  );
+};
 
-export default App
+export default App;
