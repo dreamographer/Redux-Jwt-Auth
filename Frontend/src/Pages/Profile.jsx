@@ -38,7 +38,7 @@ const Profile = () => {
           toast.error("Error uploading image");
           return;
         }
-        setPreview('')
+        setPreview("");
 
         // Get the URL of the uploaded image
         imageUrl = await imageResponse.text();
@@ -60,7 +60,6 @@ const Profile = () => {
   };
   const handleFileChange = event => {
     setImage(event.target.files[0]);
-
     // Create a preview URL
     let reader = new FileReader();
     reader.onloadend = () => {
@@ -68,6 +67,10 @@ const Profile = () => {
     };
     reader.readAsDataURL(event.target.files[0]);
     event.target.value = "";
+  };
+  const handleDelete = () => {
+  dispatch(updateImage(""))
+    toast.success("Profile Deleted");
   };
   const src = preview
     ? preview
@@ -77,7 +80,7 @@ const Profile = () => {
 
   return (
     <>
-      <main className="w-screen flex justify-center min-h-screen ">
+      <main className="w-screen  pt-5 flex justify-center min-h-screen ">
         <div className="p-2 md:p-4">
           <div className="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
             <h2 className="pl-6 text-2xl font-bold sm:text-xl">
@@ -86,13 +89,13 @@ const Profile = () => {
             <div className="grid max-w-2xl mx-auto mt-8">
               <form onSubmit={handleSubmit}>
                 <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
-                  {src&&
+                  {src && (
                     <img
                       src={src}
                       alt="chosen"
                       className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-indigo-300 dark:ring-indigo-500"
                     />
-                  }
+                  )}
                   <div className="flex flex-col space-y-5 sm:ml-8">
                     <input
                       onChange={handleFileChange}
@@ -102,7 +105,7 @@ const Profile = () => {
                     />
 
                     <button
-                      onClick={() => dispatch(updateImage(""))}
+                      onClick={handleDelete}
                       type="button"
                       className="py-3.5 px-7 text-base font-medium text-indigo-900 focus:outline-none bg-white rounded-lg border border-indigo-200 hover:bg-indigo-100 hover:text-[#202142] focus:z-10 focus:ring-4 focus:ring-indigo-200 "
                     >

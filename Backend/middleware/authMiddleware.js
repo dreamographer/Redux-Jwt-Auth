@@ -4,12 +4,10 @@ import User from "../models/userModel.js";
 const protect = async (req, res, next) => {
   try {
     let token;
-    console.log(JSON.stringify(req.cookies));
     token = req.cookies.jwt;
     if (token) {
       try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
         req.user = await User.findById(decoded.userId).select("-password");
 
         next();
@@ -27,4 +25,17 @@ const protect = async (req, res, next) => {
   }
 };
 
-export { protect };
+const isAdmin = async (req, res, next) => {
+  try {
+    if (req.user.isAdmin) {
+      next();
+    } else {
+      res.status(401);
+      throw new Error("not authorized, no privillege");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { protect, isAdmin };

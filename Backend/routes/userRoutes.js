@@ -21,7 +21,7 @@ router.post("/logout", userController.logoutUser);
 router.post("/upload", upload?.single("avatar"), (req, res) => {
   res.send(req.file.path.substring(16));
 });
-router
+router 
   .route("/profile")
   .get(protect, userController.getUserProfile)
   .put(protect, userController.updateUserProfile);

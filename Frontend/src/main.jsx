@@ -6,6 +6,8 @@ import Home from './Pages/Home.jsx'
 import Profile from './Pages/Profile.jsx'
 import SignUp from './Pages/SignUp.jsx'
 import PrivateRoute from './components/PrivateRoute.jsx'
+import AuthorizedRoute from './components/AuthorizedRoute.jsx'
+import AdminDashboard from './Pages/AdminDashboard.jsx'
 import { Toaster } from "react-hot-toast";
 import './index.css'
 import {
@@ -20,15 +22,18 @@ import { Provider } from "react-redux";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-    
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
-    <Route path="/" element={<App />}>
-      <Route index={true} path="/" element={<Home />} />
-      <Route path="" element={<PrivateRoute />}>
-        <Route path="/profile" element={<Profile />} />
+      <Route path="/" element={<App />}>
+        <Route index={true} path="/" element={<Home />} />
+        <Route path="" element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Route>
-    </Route>
+      {/* Admin Routes */}
+      <Route path="/admin" element={<AuthorizedRoute />}>
+        <Route path="dashboard" element={<AdminDashboard />} />
+      </Route>
     </>
   )
 );
