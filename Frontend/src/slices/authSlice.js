@@ -7,21 +7,29 @@ const initialState = {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
   reducers: {
     setCredentials: (state, action) => {
       state.userInfo = action.payload;
       
-      localStorage.setItem('userInfo', JSON.stringify(action.payload));
+      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+    },
+    updateImage: (state, action) => {
+      const updatedUserInfo = {
+        ...state.userInfo,
+        image: action.payload,
+      };
+      state.userInfo = updatedUserInfo;
+      localStorage.setItem("userInfo", JSON.stringify(updatedUserInfo));
     },
     logout: (state, action) => {
       state.userInfo = null;
-      localStorage.removeItem('userInfo');
+      localStorage.removeItem("userInfo");
     },
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { setCredentials,updateImage, logout } = authSlice.actions;
 
 export default authSlice.reducer;

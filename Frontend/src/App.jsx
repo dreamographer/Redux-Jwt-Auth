@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 import React from "react";
-import { Toaster } from "react-hot-toast";
+
+import NavBar from "./components/NavBar";
+
 const App = () => {
   return (
     <>
-      <Toaster />
+      <NavBar />
+ 
       <Outlet />
     </>
   );

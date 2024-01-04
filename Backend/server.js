@@ -4,6 +4,12 @@ import userRoutes from "./routes/userRoutes.js";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import cors from 'cors'
 dotenv.config();
 
@@ -22,7 +28,8 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use("/", express.static("Backend/uploads"));
+console.log();
 
   app.get("/", (req, res) => {
     res.send("API is running....");

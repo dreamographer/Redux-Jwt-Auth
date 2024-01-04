@@ -15,6 +15,7 @@ const userController = {
           _id: user._id,
           name: user.name,
           email: user.email,
+          image:user.image
         });
       } else {
         throw new Error("Invalid email or password");
@@ -41,6 +42,7 @@ const userController = {
       name,
       email,
       password,
+      image:''
     });
     if (user) {
       generateToken(res, user._id);
@@ -48,6 +50,7 @@ const userController = {
         _id: user._id,
         name: user.name,
         email: user.email,
+        image:user.image
       });
     } else {
       res.status(400);
@@ -69,6 +72,7 @@ const userController = {
         _id: req.user._id,
         name: req.user.name,
         email: req.user.email,
+        image:req.user.image
       });
     } else {
       res.status(404);
@@ -77,22 +81,21 @@ const userController = {
   },
 
   updateUserProfile: async (req, res) => {
-    console.log(req.body);
     const user = await User.findById(req.user._id);
-    console.log(user);
     if (user) {
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
-
+      user.image = req.body.imageUrl || user.image;
       if (req.body.password) {
         user.password = req.body.password;
       }
-
+      console.log(user.image);
       const updatedUser = await user.save();
 
       res.json({
         _id: updatedUser._id,
         name: updatedUser.name,
+        image:updatedUser.image,
         email: updatedUser.email,
       });
     } else {

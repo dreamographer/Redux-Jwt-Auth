@@ -4,30 +4,19 @@ import { logout } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../slices/userSlice";
 const Home = () => {
-    const { userInfo } = useSelector(state => state.auth);
 
-  const navigate = useNavigate();  
-  const dispatch=useDispatch()
-const logoutHandler =() => { 
-      dispatch(logoutUser()).then((res)=>{
-        dispatch(logout())
-        navigate("/login");
-      })
-  };
   return (
-    <div>
-      {userInfo ? (
-        <>
-          <p onClick={logoutHandler}>Logout</p>
-          <Link to={"/profile"}>
-            <p>Profile</p>
-          </Link>
-        </>
-      ) : (
-        <Link to={"/login"}>
-          <p>Login</p>
-        </Link>
-      )}
+    <div className='overflow-hidden'>
+      <img
+        src="/1694.jpg"
+        alt="School"
+        className="absolute -z-20 w-screen h-screen "
+      />
+      <div className=" justify-center bg-black/30  h-screen items-center  flex">
+        <p className="text-white  font-[poppins] text-6xl shadow-lg font-black">
+          WElcome to the Home Page
+        </p>
+      </div>
     </div>
   );
 }
