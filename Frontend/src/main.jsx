@@ -29,10 +29,10 @@ const router = createBrowserRouter(
         <Route path="" element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
-      </Route>
       {/* Admin Routes */}
       <Route path="/admin" element={<AuthorizedRoute />}>
         <Route path="dashboard" element={<AdminDashboard />} />
+      </Route>
       </Route>
     </>
   )
