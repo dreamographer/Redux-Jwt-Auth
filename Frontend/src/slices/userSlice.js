@@ -38,7 +38,7 @@ export const updateUser = createAsyncThunk("user/update", async data => {
 
 const userSlice = createSlice({
   name: "user",
-  initialState: { user: [], loading: "idle", error: "" },
+  initialState: { loading: "idle", error: "" },
   reducers: {},
   extraReducers: builder => {
     builder
@@ -47,7 +47,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = "idle";
-        state.user.push(action.payload);
+        // state.user.push(action.payload);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = "idle";
@@ -58,7 +58,7 @@ const userSlice = createSlice({
       })
       .addCase(logoutUser.fulfilled, state => {
         state.loading = "idle";
-        state.user = [];
+        // state.user = [];
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.loading = "idle";
@@ -69,7 +69,7 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = "idle";
-        state.user.push(action.payload);
+        // state.user.push(action.payload);
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = "idle";
@@ -80,7 +80,7 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.loading = "idle";
-        state.user =action.payload 
+        // state.user =action.payload 
        
       })
       .addCase(updateUser.rejected, (state, action) => {

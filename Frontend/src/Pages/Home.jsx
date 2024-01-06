@@ -3,6 +3,7 @@ import { useNavigate,Link} from "react-router-dom";
 import { logout } from "../slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../slices/userSlice";
+
 const Home = () => {
 
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <p className="text-white  font-[poppins] text-6xl shadow-lg font-black">
           WElcome to the Home Page
         </p>
+
       </div>
     </div>
   );

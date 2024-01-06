@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { deleteUser, getUsers, editUser } from "../slices/adminSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-
+ 
 const UsersTable = () => {
 
   const dispatch = useDispatch();
@@ -40,12 +40,13 @@ const [searchQuery, setSearchQuery] = useState("");
       <div className="flex-col flex items-center  justify-center mt-5">
         <h1>User Management</h1>
         <div className="flex  justify-start w-screen">
-        <input className="mx-96"
-          type="text"
-          placeholder="Search..."
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-        />
+          <input
+            className="mx-96"
+            type="text"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+          />
         </div>
         <table class="max-w-10 ">
           <thead class="bg-white border-b">
@@ -81,7 +82,7 @@ const [searchQuery, setSearchQuery] = useState("");
                     {editedUserId === user._id ? (
                       <input
                         type="text"
-                        value={editedUserData.name || user.name}
+                        defaultValue={editedUserData.name || user.name}
                         onChange={e =>
                           setEditedUserData({
                             ...editedUserData,
@@ -96,8 +97,8 @@ const [searchQuery, setSearchQuery] = useState("");
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     {editedUserId === user._id ? (
                       <input
-                        type="text"
-                        value={editedUserData.email || user.email}
+                        type="email"
+                        defaultValue={editedUserData.email || user.email}
                         onChange={e =>
                           setEditedUserData({
                             ...editedUserData,
@@ -120,13 +121,13 @@ const [searchQuery, setSearchQuery] = useState("");
                     ) : (
                       <>
                         <button
-                        className="mr-4"
+                          className="mr-4"
                           onClick={() => setEditedUserId(user._id)}
                           disabled={userInfo._id === user._id}
                         >
                           Edit
                         </button>
-                        <button 
+                        <button
                           onClick={() => handleDeleteUser(user._id)}
                           disabled={userInfo._id === user._id}
                         >

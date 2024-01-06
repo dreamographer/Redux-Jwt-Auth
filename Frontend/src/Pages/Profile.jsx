@@ -12,7 +12,7 @@ const Profile = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [preview, setPreview] = useState();
   const dispatch = useDispatch();
-  const { userInfo } = useSelector(state => state.auth);
+  const { userInfo } = useSelector(state => state.auth); 
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const Profile = () => {
           console.log(action.payload);
           dispatch(setCredentials(action.payload));
           toast.success("Credentials Updated");
-        }
+        } 
       });
     }
   };
@@ -70,7 +70,6 @@ const Profile = () => {
   };
   const handleDelete = () => {
   dispatch(updateImage(""))
-    toast.success("Profile Deleted");
   };
   const src = preview
     ? preview
@@ -101,8 +100,15 @@ const Profile = () => {
                       onChange={handleFileChange}
                       type="file"
                       name="avatar"
-                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 "
+                      id="file-input"
+                      className="sr-only"
                     />
+                    <label
+                      htmlFor="file-input"
+                      className="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 cursor-pointer"
+                    >
+                      Change Your Picture
+                    </label>
 
                     <button
                       onClick={handleDelete}

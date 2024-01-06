@@ -1,9 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUsers, createUser } from "../slices/adminSlice";
-import { setCredentials } from "../slices/authSlice";
+import {  createUser } from "../slices/adminSlice";
+
 import toast from "react-hot-toast";
 
 const AddUser = ({close}) => {

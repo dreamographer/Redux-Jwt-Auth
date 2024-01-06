@@ -15,7 +15,7 @@ const userController = {
           _id: user._id,
           name: user.name,
           email: user.email,
-          image: user.image,
+          image: user.imageURL,
           isAdmin: user.isAdmin,
         });
       } else {
@@ -95,11 +95,13 @@ const userController = {
 
   updateUserProfile: async (req, res) => {
     try {
+
       const user = await User.findById(req.user._id);
       if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
-        user.image = req.body.imageUrl || user.image;
+        user.imageURL = req.body.imageUrl || user.imageURL;
+     
         if (req.body.password) {
           user.password = req.body.password;
         }
@@ -108,7 +110,7 @@ const userController = {
         res.json({
           _id: updatedUser._id,
           name: updatedUser.name,
-          image: updatedUser.image,
+          image: updatedUser.imageURL,
           email: updatedUser.email,
         });
       } else {
