@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
-    "client": "npm run dev --prefix frontend",
+    "start": "node Backend/server.js",
+    "server": "nodemon Backend/server.js",
+    "client": "npm run dev --prefix Frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
