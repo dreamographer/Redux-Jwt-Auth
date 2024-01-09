@@ -21,8 +21,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "https://authdeck.vercel.app", // replace with your client's origin
-    secure: true,
+    origin: "http://localhost:5173", // replace with your client's origin
     credentials: true,
     exposedHeaders: ["set-cookie"],
   })

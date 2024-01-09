@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const ADMIN_USERS_URL = "https://react-redux-auth.onrender.com/api/admin/users";
+const ADMIN_USERS_URL = "http://localhost:5000/api/admin/users";
 
 // Async actions
 export const getUsers = createAsyncThunk("users/getUsers", async () => {

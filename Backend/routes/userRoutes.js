@@ -4,7 +4,7 @@ import { protect } from "../middleware/authMiddleware.js";
 import multer from "multer"
 const storage = multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, "Backend/uploads/");
+    callback(null, "./Backend/uploads");
   },
   filename: function (req, file, callback) {
     callback(null, Date.now() + "-" + file.originalname);

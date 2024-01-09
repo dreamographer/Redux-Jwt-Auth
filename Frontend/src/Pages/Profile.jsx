@@ -27,7 +27,7 @@ const Profile = () => {
 
         // Send the image to the server
         const imageResponse = await fetch(
-          "https://react-redux-auth.onrender.com/api/users/upload",
+          "http://localhost:5000/api/users/upload",
           {
             method: "POST",
             body: formData,
@@ -74,7 +74,7 @@ const Profile = () => {
   const src = preview
     ? preview
     : userInfo.image
-    ? "https://react-redux-auth.onrender.com/" + userInfo.image
+    ? "http://localhost:5000/" + userInfo.image
     : "https://avatar.iran.liara.run/public/boy?username=Ash";
 
   return (
